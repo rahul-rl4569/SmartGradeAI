@@ -1,0 +1,14 @@
+node_modules/
+**/node_modules/
+server/.huggingface-cache/
+server/.paddlex-cache/
+client/dist/
+server/.env
+.env
+.secrets/
+server/data/*.sqlite
+server/data/*.sqlite-*
+server/uploads/**
+!server/uploads/.gitkeep
+coverage/
+.DS_Store

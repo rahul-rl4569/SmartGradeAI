@@ -1,0 +1,1379 @@
+# ROLE AND RESPONSIBILITY
+
+Act as a Senior Full-Stack Software Engineer, UI/UX Designer, AI Engineer, Database Architect, Security Engineer, and EdTech Product Developer.
+
+Your task is to design, develop, test, and document a complete, production-oriented educational platform called **SmartGrade AI**.
+
+I do not want just a frontend prototype, static landing page, UI mockup, or collection of disconnected components.
+
+I want a complete, functional full-stack web application with a responsive frontend, secure authentication, backend APIs, SQLite database, teacher and student dashboards, AI-powered assignment evaluation, reporting, analytics, and all essential supporting features.
+
+You must implement the application systematically, verify that each component works, and provide complete source code.
+
+Do not stop after creating the homepage or dashboard UI.
+
+---
+
+# 1. REFERENCE IMAGES AND DESIGN REQUIREMENTS
+
+I have attached three reference images:
+
+1. SmartGrade AI application architecture and workflow diagram.
+2. Brand color reference showing Forest Green and Leaf Green.
+3. Black geometric circular logo.
+
+Analyze all three reference images before starting development.
+
+Use them as the primary design references.
+
+## Brand Identity
+
+Application name: SmartGrade AI
+
+Primary color:
+Forest Green — #064734
+
+Secondary color:
+Leaf Green — #E0FFC2
+
+Additional colors:
+- White: #FFFFFF
+- Off-white background: #FAFAF5
+- Light green surface: #F0F7E9
+- Dark text: #17251F
+- Secondary text: #64746B
+- Borders: #DCE6DD
+- Error: #DC2626
+- Warning: #D97706
+- Success: #15803D
+
+Use Forest Green for:
+- Primary buttons
+- Navigation highlights
+- Important headings
+- Dashboard navigation
+- Primary brand elements
+- Selected sidebar items
+
+Use Leaf Green for:
+- Highlight cards
+- Subtle backgrounds
+- AI feature highlights
+- Success indicators
+- Dashboard accents
+- Selected visual elements
+
+## Logo Requirements
+
+Use the uploaded geometric black logo as the official logo reference.
+
+- Preserve its distinctive circular geometric design.
+- Do not replace it with an unrelated AI icon.
+- Do not use a generic brain logo as a substitute.
+- Create appropriate light and dark logo variants if necessary.
+- Ensure the logo is clearly visible against Forest Green and light backgrounds.
+- Use the logo consistently across the navbar, login page, signup page, dashboards, footer, and browser favicon.
+- If the reference image is unsuitable for direct use, recreate a faithful vector version using SVG.
+- Do not claim to have extracted an original vector file unless the source actually provides one.
+
+The product name must always appear as SmartGrade AI.
+
+## Visual Direction
+
+Create a polished educational SaaS product with:
+
+- Clean layouts
+- Modern typography
+- Generous spacing
+- Consistent alignment
+- Professional dashboard cards
+- Subtle shadows
+- Rounded corners
+- Elegant charts
+- Accessible forms
+- Clear visual hierarchy
+- Responsive navigation
+- Smooth but restrained animations
+- Helpful empty states
+- Loading skeletons
+- Toast notifications
+- Confirmation dialogs
+
+Avoid excessive gradients, distracting animations, oversized decorative graphics, and unnecessary visual clutter.
+
+The final interface should feel like a real commercial EdTech platform rather than a student demo project.
+
+Use the attached architecture diagram to guide the application structure and business workflows.
+
+---
+
+# 2. REQUIRED TECHNOLOGY STACK
+
+Use the following technology stack unless a compelling technical reason requires an alternative.
+
+## Frontend
+- React
+- Vite
+- JavaScript with JSX
+- React Router
+- Tailwind CSS or a consistent modern CSS architecture
+- Lucide React for interface icons
+- Recharts for analytics and charts
+- Axios or a well-structured Fetch API client
+
+## Backend
+- Node.js
+- Express.js
+- RESTful API architecture
+- Zod for request validation
+- bcryptjs for password hashing
+- JWT authentication using secure implementation practices
+- Appropriate authentication middleware
+- Centralized error handling
+
+## Database
+- SQLite
+- Better-sqlite3 or another compatible SQLite library
+- Database initialization scripts
+- Database migrations or versioned schema management
+- Parameterized SQL queries
+- Foreign key constraints
+- Proper indexes
+- Seed data for development
+
+## AI Integration
+Create a provider-independent AI service interface.
+
+Use an AI provider through a server-side API integration.
+
+Requirements:
+- Keep API keys on the server.
+- Load secrets from environment variables.
+- Never expose API keys in React code.
+- Validate all AI requests and responses.
+- Handle provider failures gracefully.
+- Support configurable AI models.
+- Include a mock AI provider for local development and testing.
+- Never claim that real AI evaluation has occurred when mock mode is enabled.
+
+Use a current, supported AI SDK compatible with the selected provider and document its installation and configuration.
+
+Do not invent undocumented SDK methods.
+
+## File Processing
+For assignment uploads, implement secure file handling.
+
+Support appropriate formats such as:
+- PDF
+- DOCX
+- TXT
+
+Allow image uploads for question papers and handwritten submissions only when a suitable OCR or vision-processing pipeline has been implemented.
+
+Validate file types, file sizes, filenames, and content wherever practical.
+
+Store uploaded files outside publicly accessible directories and serve them only through authorized backend endpoints.
+
+Do not execute uploaded files.
+
+---
+
+# 3. REQUIRED WEBSITE PAGES
+
+Create all the following pages.
+
+## A. Public Website
+
+### 1. Home Page — /
+
+Create a professional landing page containing:
+
+- Responsive navbar
+- SmartGrade AI logo
+- Home
+- About
+- Features
+- How It Works
+- Contact
+- Login
+- Get Started button
+
+Hero section:
+- Headline introducing AI-powered assessment and grading.
+- Supporting description.
+- Primary CTA: Get Started
+- Secondary CTA: Explore Features
+- Professional product dashboard preview
+- Appropriate educational illustrations or UI mockups
+
+Features section:
+- AI-assisted assignment evaluation
+- Automated question extraction
+- Rubric generation
+- Teacher-controlled grading
+- Student submissions
+- Feedback generation
+- Marks management
+- Performance analytics
+- Learning gap identification
+
+How It Works:
+1. Teacher creates a class.
+2. Teacher creates an assignment.
+3. Teacher uploads a question paper.
+4. AI extracts questions.
+5. AI suggests a grading rubric.
+6. Teacher reviews and approves the rubric.
+7. Student views the assignment and submits answers.
+8. AI evaluates the submission.
+9. Teacher reviews marks and feedback.
+10. Teacher approves the final result.
+11. Students receive their results and reports.
+
+Include a benefits section, CTA section, footer, and responsive mobile layout.
+
+Do not use fake customer testimonials, fabricated statistics, or invented institutional partnerships.
+
+### 2. About Page — /about
+
+Include:
+- Platform purpose
+- Problem SmartGrade AI solves
+- Product vision
+- Teacher-focused benefits
+- Student-focused benefits
+- Responsible use of AI
+- Human oversight in assessment
+
+### 3. Features Page — /features
+
+Provide detailed feature descriptions and navigation to relevant product workflows.
+
+### 4. How It Works Page — /how-it-works
+
+Explain the teacher workflow, student workflow, AI evaluation process, and final approval process.
+
+### 5. Contact Page — /contact
+
+Include:
+- Name
+- Email
+- Subject
+- Message
+- Form validation
+- Backend submission
+- Success and error states
+
+Store contact requests in SQLite.
+
+Add rate limiting and appropriate input validation.
+
+### 6. Login Page — /login
+
+Include:
+- Email
+- Password
+- Show/hide password
+- Remember-me option only if its behavior is implemented securely
+- Login button
+- Link to signup
+- Forgot password link
+- Validation messages
+- Loading state
+- Error handling
+- Responsive design
+
+Do not create a fake login that only redirects users without authenticating them.
+
+### 7. Signup Page — /signup
+
+Include:
+- Full name
+- Email
+- Password
+- Confirm password
+- Account role selection where appropriate
+- Terms acceptance
+- Validation
+- Duplicate email handling
+- Secure password hashing on the server
+
+Public users must not be able to register themselves as administrators.
+
+### 8. Forgot Password — /forgot-password
+
+Implement a secure password reset workflow using expiring, single-use reset tokens.
+
+In development mode, document a safe way to test password resets.
+
+Do not expose reset tokens in production API responses.
+
+### 9. Unauthorized and Not Found Pages
+
+Create:
+- 403 Unauthorized
+- 404 Not Found
+- 500 or equivalent error state
+
+---
+
+# 4. AUTHENTICATION AND AUTHORIZATION
+
+Implement real backend authentication.
+
+Requirements:
+- Secure password hashing
+- Login and logout
+- Role-based access control
+- Authentication middleware
+- Protected frontend routes
+- Protected backend API routes
+- Appropriate token expiration
+- Secure token storage strategy
+- Logout invalidation strategy where supported
+- Input validation
+- Login rate limiting
+- Generic authentication error messages
+- Authorization checks on every protected resource
+
+Prefer secure, HttpOnly cookies for browser authentication, with appropriate SameSite and Secure settings.
+
+If cookies are used, implement CSRF protection appropriate to the chosen architecture.
+
+Never store plaintext passwords.
+
+Never rely only on frontend role checks.
+
+Never allow a student to access another student's private submissions or reports.
+
+Never allow teachers to access classes or assignments outside their authorized scope.
+
+## Roles
+
+### Teacher
+Can:
+- Create and manage classes
+- Create assignments
+- Upload question papers
+- Generate and edit rubrics
+- Review AI-extracted questions
+- Publish assignments
+- Review submissions
+- Review AI-generated marks
+- Edit proposed marks
+- Approve final grades
+- View class analytics
+- Generate reports
+
+### Student
+Can:
+- View enrolled classes
+- View published assignments
+- Submit answers
+- View their own submissions
+- View released marks and feedback
+- View their own progress reports
+
+### Administrator
+
+Implement a restricted administrative role with appropriate controls for:
+- User management
+- Account status management
+- Platform-level monitoring
+- Support requests
+
+Do not give administrators unrestricted access to student content without an explicit, documented authorization requirement.
+
+Prevent privilege escalation.
+
+---
+
+# 5. TEACHER DASHBOARD
+
+Route: /teacher/dashboard
+
+Build a fully functional dashboard.
+
+Include:
+- Welcome section
+- Total classes
+- Total assignments
+- Pending submissions
+- Evaluations awaiting review
+- Recent activity
+- Upcoming assignment deadlines
+- Class performance chart
+- Recent evaluation summary
+- Quick action buttons
+
+Teacher sidebar:
+
+1. Overview
+2. My Classes
+3. Assignments
+4. Question Papers
+5. Rubrics
+6. Submissions
+7. AI Evaluation
+8. Marks & Feedback
+9. Analytics
+10. Reports
+11. Profile
+12. Settings
+13. Logout
+
+Every sidebar item must navigate to a working page.
+
+Do not create dead buttons or placeholder pages that pretend to be functional.
+
+---
+
+# 6. CLASS MANAGEMENT
+
+Route: /teacher/classes
+
+Implement:
+
+- Create class
+- Edit class
+- View class details
+- Archive class
+- List classes
+- Search and filter
+- Pagination where necessary
+- Student enrollment
+- Class enrollment code
+- Class performance overview
+
+Each class should have:
+- Class name
+- Subject
+- Description
+- Teacher
+- Enrollment code
+- Creation date
+- Student list
+
+Ensure class ownership and enrollment permissions are enforced by the backend.
+
+Allow students to join using a valid enrollment code.
+
+Prevent unauthorized enrollment and duplicate enrollment.
+
+---
+
+# 7. ASSIGNMENT MANAGEMENT
+
+Route: /teacher/assignments
+
+Implement:
+- Create assignment
+- Edit assignment
+- Delete or archive assignment where appropriate
+- View assignment details
+- Set instructions
+- Set total marks
+- Set due date
+- Select class
+- Upload question paper
+- Save as draft
+- Publish assignment
+- Close submissions
+- View submission statistics
+
+Assignment states:
+- Draft
+- Published
+- Closed
+- Archived
+
+Validate that due dates, total marks, class ownership, and publication state are handled correctly.
+
+Only eligible enrolled students should see published assignments.
+
+---
+
+# 8. AI QUESTION EXTRACTION
+
+When a teacher uploads a supported question paper:
+
+1. Validate the upload.
+2. Extract text using an appropriate document-processing library.
+3. Use OCR or a suitable vision pipeline when implemented and required.
+4. Send the extracted text to the configured AI provider.
+5. Request structured question extraction.
+6. Validate the returned structure.
+7. Display the extracted questions for teacher review.
+8. Allow teachers to edit, add, reorder, or remove questions.
+9. Save the approved questions to SQLite.
+
+Each question should support:
+- Question text
+- Question number
+- Maximum marks
+- Question type
+- Optional model answer
+- Optional learning objective
+
+Handle scanned documents and unreadable files gracefully.
+
+Do not silently invent missing questions or marks.
+
+If extraction fails, display a useful error and provide a manual question-entry option.
+
+---
+
+# 9. AI-ASSISTED RUBRIC GENERATION
+
+Create a rubric generation workflow.
+
+The teacher should be able to:
+- Generate a suggested rubric
+- Review criteria
+- Edit criteria
+- Add criteria
+- Delete criteria
+- Change marks allocation
+- Preview the complete rubric
+- Approve and save the rubric
+
+Each rubric should contain:
+- Rubric name
+- Assignment
+- Criteria
+- Criterion descriptions
+- Maximum marks
+- Performance-level descriptions where appropriate
+- Total allocated marks
+- Version information
+- Approval status
+
+The total marks allocated across the rubric must be validated.
+
+AI-generated rubrics are suggestions, not automatically approved assessment policies.
+
+Do not publish an AI-generated rubric until the teacher approves it.
+
+---
+
+# 10. STUDENT DASHBOARD
+
+Route: /student/dashboard
+
+Create a separate dashboard for students.
+
+Include:
+- Welcome section
+- Enrolled classes
+- Upcoming assignments
+- Pending submissions
+- Submitted assignments
+- Released results
+- Recent feedback
+- Performance overview
+- Learning progress chart
+
+Student sidebar:
+
+1. Overview
+2. My Classes
+3. Assignments
+4. My Submissions
+5. Marks & Feedback
+6. Progress Reports
+7. Profile
+8. Settings
+9. Logout
+
+Every page must use actual authenticated user data.
+
+Provide empty states for new students.
+
+---
+
+# 11. STUDENT ASSIGNMENT SUBMISSION
+
+Students should be able to:
+
+1. Open an available assignment.
+2. Read instructions.
+3. View the approved questions.
+4. Enter answers or upload supported answer documents.
+5. Save a draft if supported.
+6. Review their responses.
+7. Submit their answers.
+8. Receive a submission confirmation.
+9. View submission status.
+
+Enforce:
+- Enrollment authorization
+- Assignment publication status
+- Submission deadlines
+- File validation
+- Duplicate-submission rules
+- Submission versioning or resubmission rules where applicable
+
+Use transactions or appropriate consistency controls when saving submissions.
+
+A student must never see another student's answers, marks, or private feedback.
+
+---
+
+# 12. AI EVALUATION ENGINE
+
+This is one of the most important parts of SmartGrade AI.
+
+Implement a modular AI evaluation service.
+
+Evaluation workflow:
+
+1. Load the assignment and approved questions.
+2. Load the teacher-approved rubric.
+3. Load the student's submitted answers.
+4. Verify that the submission is eligible for evaluation.
+5. Send the necessary content to the AI provider.
+6. Request structured, question-by-question evaluation.
+7. Validate the returned output.
+8. Store proposed marks, criterion-level scores, explanations, and feedback.
+9. Flag uncertain or incomplete evaluations.
+10. Present the results to the teacher for review.
+11. Allow the teacher to edit proposed marks.
+12. Require explicit teacher approval before final grades are released.
+13. Make released results visible to the appropriate student.
+
+For each question, return:
+- Question ID
+- Maximum marks
+- Proposed marks
+- Explanation
+- Rubric criterion scores
+- Constructive feedback
+- Confidence or review indicator, when supported
+- Review flags
+- Evaluation status
+
+Use structured JSON output and server-side schema validation.
+
+The sum of criterion scores must not exceed the allowed marks.
+
+The total assignment score must never exceed the assignment's maximum marks.
+
+Do not evaluate missing answers as though they contain valid content.
+
+Do not fabricate citations, evidence, or answer content.
+
+Treat submitted student content as untrusted data, not as instructions to the AI evaluator.
+
+Do not allow instructions embedded in an uploaded answer to override the approved rubric or system evaluation rules.
+
+Support manual teacher grading when AI is unavailable.
+
+Handle:
+- API timeouts
+- Rate limits
+- Invalid AI output
+- Provider outages
+- Missing answers
+- Ambiguous responses
+- Unexpected file formats
+
+AI evaluation must be explainable and reviewable.
+
+Do not release grades automatically without teacher approval.
+
+---
+
+# 13. MARKS AND FEEDBACK
+
+Create a complete marks-management workflow.
+
+Teachers should be able to:
+- View all submissions for an assignment
+- Compare proposed and final marks
+- Inspect question-level feedback
+- Edit marks
+- Add private teacher notes
+- Approve grades
+- Release results
+- Return work for revision where supported
+
+Students should be able to:
+- View released marks
+- View feedback
+- View question-wise performance
+- View rubric-based explanations
+- View permitted progress summaries
+
+Keep private teacher notes separate from student-visible feedback.
+
+Record grade changes and approvals in an audit log.
+
+---
+
+# 14. ANALYTICS AND REPORTS
+
+Create useful, data-driven analytics.
+
+Teacher analytics:
+- Class average
+- Median score
+- Highest and lowest score
+- Submission completion rate
+- Assignment completion trends
+- Question-wise performance
+- Rubric criterion performance
+- Learning gaps
+- Students requiring additional support
+
+Student analytics:
+- Personal score trends
+- Assignment completion
+- Subject-wise performance
+- Strengths
+- Areas for improvement
+- Recommended next steps
+
+Reports:
+- Class marks table
+- Individual student report
+- Assignment evaluation report
+- Class performance report
+
+Allow exporting appropriate reports to CSV.
+
+If PDF report generation is implemented, include properly formatted downloadable PDFs.
+
+Only calculate statistics from the relevant authorized data.
+
+Handle missing results and empty datasets without crashing.
+
+Never fabricate analytics or show hardcoded numbers as live results.
+
+Clearly distinguish sample/demo data from actual database records.
+
+---
+
+# 15. DATABASE DESIGN
+
+Use SQLite as the primary application database.
+
+Design a normalized schema with appropriate foreign keys and indexes.
+
+At minimum, consider these tables:
+
+1. users
+2. password_reset_tokens
+3. classes
+4. class_enrollments
+5. assignments
+6. assignment_questions
+7. assignment_files
+8. rubrics
+9. rubric_criteria
+10. submissions
+11. submission_answers
+12. submission_files
+13. evaluations
+14. evaluation_question_results
+15. evaluation_criterion_results
+16. feedback
+17. grade_approvals
+18. audit_logs
+19. contact_messages
+20. notifications
+
+Add other tables when required by the actual implementation.
+
+Include:
+- Schema initialization
+- Database migration strategy
+- Foreign key enforcement
+- Unique constraints
+- Timestamps
+- Appropriate status fields
+- Transactional operations
+- Safe parameterized SQL
+
+Document the relationship between tables.
+
+Use a consistent database access layer.
+
+Do not place all database queries directly inside route handlers.
+
+Do not use in-memory arrays as a replacement for persistent application data.
+
+Do not reset the database every time the server starts.
+
+---
+
+# 16. BACKEND API DESIGN
+
+Organize the Express API into modular routes and services.
+
+Suggested API groups:
+
+/api/auth
+/api/users
+/api/classes
+/api/enrollments
+/api/assignments
+/api/questions
+/api/files
+/api/rubrics
+/api/submissions
+/api/evaluations
+/api/feedback
+/api/marks
+/api/analytics
+/api/reports
+/api/notifications
+/api/contact
+
+Implement:
+- Request validation
+- Authentication middleware
+- Role authorization
+- Ownership checks
+- Consistent HTTP status codes
+- Standard JSON responses
+- Centralized error handling
+- Request logging without leaking sensitive information
+- Rate limiting
+- Pagination and filtering where appropriate
+
+Add:
+GET /api/health
+
+The health endpoint should report application and database readiness without exposing secrets.
+
+Document every implemented endpoint.
+
+Never create frontend buttons that call nonexistent endpoints.
+
+Never claim that an API is complete unless the corresponding backend route and behavior actually exist.
+
+---
+
+# 17. REQUIRED APPLICATION ARCHITECTURE
+
+Follow this architecture:
+
+React Frontend
+    |
+    | HTTP/JSON requests
+    v
+Express API
+    |
+    +---- Authentication Services
+    |
+    +---- Class and Assignment Services
+    |
+    +---- AI Question Extraction Service
+    |
+    +---- Rubric Service
+    |
+    +---- AI Evaluation Service
+    |
+    +---- Marks and Feedback Service
+    |
+    +---- Analytics and Reporting Service
+    |
+    v
+Database Access Layer
+    |
+    v
+SQLite Database
+
+Important:
+The React frontend must never connect directly to SQLite.
+
+All protected database operations must pass through the backend.
+
+Business logic must be implemented in reusable services rather than duplicated across routes.
+
+Keep AI provider integration separate from business logic.
+
+Follow the supplied architecture and workflow reference image.
+
+---
+
+# 18. SUGGESTED PROJECT STRUCTURE
+
+Use a clean, maintainable structure similar to:
+
+smartgrade-ai/
+|
+├── client/
+│   ├── public/
+│   │   ├── logo.svg
+│   │   └── favicon.svg
+│   ├── src/
+│   │   ├── assets/
+│   │   ├── components/
+│   │   ├── layouts/
+│   │   ├── pages/
+│   │   │   ├── public/
+│   │   │   ├── auth/
+│   │   │   ├── teacher/
+│   │   │   ├── student/
+│   │   │   └── admin/
+│   │   ├── routes/
+│   │   ├── services/
+│   │   ├── hooks/
+│   │   ├── context/
+│   │   ├── utils/
+│   │   ├── App.jsx
+│   │   └── main.jsx
+│   └── package.json
+|
+├── server/
+│   ├── src/
+│   │   ├── config/
+│   │   ├── middleware/
+│   │   ├── routes/
+│   │   ├── controllers/
+│   │   ├── services/
+│   │   ├── repositories/
+│   │   ├── validators/
+│   │   ├── ai/
+│   │   ├── database/
+│   │   ├── utils/
+│   │   ├── app.js
+│   │   └── server.js
+│   ├── tests/
+│   ├── uploads/
+│   ├── .env.example
+│   └── package.json
+|
+├── docs/
+│   ├── architecture.md
+│   ├── database-schema.md
+│   └── api-documentation.md
+|
+├── .gitignore
+├── package.json
+└── README.md
+
+You may improve this structure when technically justified.
+
+Do not create unnecessary files merely to make the project look larger.
+
+Keep frontend, backend, AI services, and database responsibilities separate.
+
+---
+
+# 19. ENVIRONMENT CONFIGURATION
+
+Create a complete .env.example file.
+
+Include only variables that the application actually uses.
+
+Possible variables:
+
+PORT=
+NODE_ENV=
+CLIENT_URL=
+DATABASE_PATH=
+JWT_SECRET=
+COOKIE_SECRET=
+AI_PROVIDER=
+AI_API_KEY=
+AI_MODEL=
+SESSION_OR_TOKEN_EXPIRY=
+UPLOAD_DIRECTORY=
+MAX_UPLOAD_SIZE=
+
+Adapt the variables to the final architecture.
+
+Never include actual production secrets.
+
+Never hardcode API keys, passwords, or JWT secrets.
+
+Explain how to generate secure secrets.
+
+Ensure .env files are excluded from version control.
+
+Validate required environment variables during application startup.
+
+Provide helpful errors when configuration is missing.
+
+The application must support a documented local development mode without requiring an AI API key when mock AI mode is explicitly enabled.
+
+---
+
+# 20. SECURITY AND PRIVACY
+
+Implement reasonable security controls throughout the application.
+
+Requirements:
+- Password hashing
+- Authentication and authorization
+- Role and ownership checks
+- Secure cookies or an explicitly documented alternative
+- CSRF protection when applicable
+- Input validation
+- SQL injection prevention
+- File upload restrictions
+- Rate limiting
+- Safe error responses
+- Audit logging
+- Secret management
+- Protection against unauthorized data access
+- Appropriate security headers
+- CORS restricted to configured origins
+- Safe handling of student submissions
+- Data minimization
+- No unnecessary exposure of personal information
+
+Do not log passwords, authentication tokens, API keys, or full private student submissions unnecessarily.
+
+Do not represent the application as legally compliant with any regulation unless compliance has actually been assessed.
+
+Document remaining security limitations.
+
+---
+
+# 21. RESPONSIVE UI AND ACCESSIBILITY
+
+The application must work on:
+- Desktop
+- Laptop
+- Tablet
+- Mobile
+
+Implement:
+- Responsive layouts
+- Accessible form labels
+- Keyboard navigation
+- Visible focus states
+- Appropriate contrast
+- Accessible dialogs
+- Clear validation errors
+- Semantic HTML
+- Responsive tables or mobile-friendly table alternatives
+- Loading states
+- Error states
+- Empty states
+
+Use consistent design tokens for colors, spacing, typography, and border radii.
+
+The Forest Green and Leaf Green branding must remain consistent across all pages.
+
+---
+
+# 22. FUNCTIONALITY REQUIREMENTS
+
+The following requirements are mandatory:
+
+1. All public navigation links work.
+2. All forms have real validation.
+3. Login uses backend authentication.
+4. Signup creates persistent database records.
+5. Protected routes enforce authorization.
+6. Teachers can create and manage classes.
+7. Teachers can create and publish assignments.
+8. Teachers can upload supported question papers.
+9. AI question extraction is implemented or clearly marked unavailable when its provider is not configured.
+10. Teachers can edit and approve rubrics.
+11. Students can join classes.
+12. Students can view published assignments.
+13. Students can submit answers.
+14. Submission data persists in SQLite.
+15. AI evaluation supports a documented mock mode and configurable real provider integration.
+16. Teachers can review and edit proposed marks.
+17. Final grades require teacher approval.
+18. Students can view released results.
+19. Analytics use actual authorized database data.
+20. Reports export the data they claim to export.
+21. Contact form submissions persist in the database.
+22. Errors are handled gracefully.
+23. No essential button is decorative only.
+24. No protected page exposes private data to unauthorized users.
+25. The project can be installed and started using the documented commands.
+
+If a feature cannot be completed, clearly identify what is missing and why.
+
+Do not hide incomplete functionality behind attractive UI.
+
+---
+
+# 23. TESTING REQUIREMENTS
+
+Create automated tests appropriate to the project.
+
+At minimum, test:
+
+## Authentication
+- Successful registration
+- Duplicate email rejection
+- Successful login
+- Invalid login
+- Unauthorized access
+- Role-based access
+
+## Classes
+- Class creation
+- Class ownership
+- Student enrollment
+- Duplicate enrollment handling
+
+## Assignments
+- Assignment creation
+- Assignment publication
+- Access control
+- Deadline validation
+
+## Submissions
+- Authorized submission
+- Unauthorized submission rejection
+- Submission persistence
+- Resubmission rules
+
+## Evaluation
+- Mock AI evaluation
+- Invalid AI output handling
+- Maximum marks validation
+- Teacher editing
+- Approval workflow
+- Result release
+
+## Database
+- Database initialization
+- Foreign key behavior
+- Transaction behavior
+- Data persistence after restarting the server
+
+Also verify:
+- Frontend production build
+- Backend startup
+- API health endpoint
+- Database readiness
+- Main user workflows
+
+Fix errors discovered during testing.
+
+Do not claim that tests passed unless they were actually executed and passed.
+
+---
+
+# 24. DEVELOPMENT WORKFLOW
+
+Build the application in the following order.
+
+## Phase 1: Project Foundation
+- Inspect the environment if an existing project is provided.
+- Establish the folder structure.
+- Configure frontend and backend.
+- Install compatible dependencies.
+- Configure environment variables.
+- Set up SQLite.
+- Implement the health endpoint.
+
+## Phase 2: Branding and Public Website
+- Implement the shared design system.
+- Integrate the supplied logo reference.
+- Build the responsive navbar and footer.
+- Build Home, About, Features, How It Works, and Contact.
+- Build login, signup, and password reset pages.
+
+## Phase 3: Authentication
+- Implement backend authentication.
+- Implement role-based authorization.
+- Protect frontend and backend routes.
+- Test login and signup.
+- Verify user records persist in SQLite.
+
+## Phase 4: Database and Core APIs
+- Implement the database schema.
+- Implement repositories and services.
+- Build class, enrollment, and assignment APIs.
+- Test permissions and persistence.
+
+## Phase 5: Teacher Dashboard
+- Implement class management.
+- Implement assignment management.
+- Implement question extraction workflow.
+- Implement rubric generation and approval.
+
+## Phase 6: Student Dashboard
+- Implement class enrollment.
+- Implement assignment viewing.
+- Implement answer submission.
+- Implement submission history.
+
+## Phase 7: AI Evaluation
+- Implement the AI provider abstraction.
+- Implement mock AI mode.
+- Implement question-by-question evaluation.
+- Implement review flags.
+- Implement teacher review and approval.
+
+## Phase 8: Analytics and Reports
+- Implement marks management.
+- Implement feedback release.
+- Implement analytics.
+- Implement CSV export.
+- Add PDF export if feasible.
+
+## Phase 9: Testing and Finalization
+- Run automated tests.
+- Run production builds.
+- Fix detected errors.
+- Verify important workflows.
+- Document installation and startup.
+- Prepare a complete handover.
+
+Do not skip a phase simply to produce a faster-looking result.
+
+---
+
+# 25. HOW YOU MUST WORK WITH ME
+
+I want clear, beginner-friendly, step-by-step implementation instructions.
+
+I am working on a Windows computer.
+
+When giving terminal commands:
+- Clearly state which terminal to open.
+- Clearly state the folder in which each command must run.
+- Specify whether the command is for the project root, client, or server.
+- Explain when a new terminal is required.
+- Explain which terminal runs the frontend and which runs the backend.
+- Use Windows-compatible instructions where appropriate.
+
+When creating or editing files:
+- Give the exact file path.
+- Provide complete file contents when necessary.
+- Do not provide disconnected snippets without explaining where they belong.
+- Keep imports, exports, environment variables, and dependencies consistent.
+- Do not silently omit required code.
+- Avoid repeatedly replacing working code with unrelated implementations.
+
+If I provide an existing project:
+1. Inspect the existing files first.
+2. Understand the current architecture.
+3. Identify working functionality.
+4. Preserve existing working features.
+5. Modify only what is necessary.
+6. Explain important changes.
+7. Avoid replacing the entire project without a clear reason.
+
+If I start a fresh project:
+- Build the project from the beginning using the architecture specified above.
+
+Never assume that a file exists unless you have verified it or created it.
+
+Never claim that a command worked without actually verifying its result.
+
+---
+
+# 26. DELIVERABLES
+
+I expect the following deliverables:
+
+1. Complete React frontend source code.
+2. Complete Express backend source code.
+3. SQLite schema and initialization scripts.
+4. Database migrations or documented schema updates.
+5. Authentication and authorization implementation.
+6. All public pages.
+7. Teacher dashboard.
+8. Student dashboard.
+9. Restricted administrator interface.
+10. Assignment management.
+11. Question paper upload and extraction workflow.
+12. Rubric generation and approval.
+13. Student submission workflow.
+14. AI evaluation service.
+15. Mock AI mode.
+16. Configurable real AI integration.
+17. Teacher grade review and approval.
+18. Student marks and feedback.
+19. Analytics and reporting.
+20. CSV export.
+21. Contact form backend.
+22. Automated tests.
+23. .env.example.
+24. .gitignore.
+25. Root package.json and appropriate client/server package files.
+26. Complete README.md.
+27. Database documentation.
+28. API documentation.
+29. Windows installation instructions.
+30. Windows startup instructions.
+31. Troubleshooting guide.
+32. Demo account creation instructions for local development.
+33. A final verification checklist.
+34. A ZIP archive of the complete source code if the environment supports creating downloadable files.
+
+Include a useful demo dataset, but clearly identify all sample records as development data.
+
+Never package real secrets in the ZIP archive.
+
+---
+
+# 27. FINAL ACCEPTANCE CRITERIA
+
+Before declaring the project complete, verify the following:
+
+- The website displays the SmartGrade AI brand correctly.
+- The supplied logo reference has been incorporated appropriately.
+- Forest Green #064734 and Leaf Green #E0FFC2 are used consistently.
+- The public website is responsive.
+- All main public pages work.
+- Login and signup communicate with the backend.
+- Passwords are hashed.
+- User data persists in SQLite.
+- Role-based access is enforced.
+- Teacher and student dashboards are separate.
+- Classes and assignments can be managed.
+- Students can submit assignments.
+- AI evaluation can be tested in mock mode.
+- Real AI integration is configured through environment variables.
+- Teachers can review and approve grades.
+- Students only see results that have been released to them.
+- Analytics are derived from actual application data.
+- The application does not expose protected information.
+- No critical navigation item is broken.
+- The frontend production build succeeds.
+- The backend starts successfully.
+- Automated tests have been executed and their actual results documented.
+- The project can be set up by following the README.
+
+Clearly distinguish between:
+- Implemented and tested features
+- Implemented but not fully tested features
+- Features requiring external credentials
+- Features that remain incomplete
+
+Never claim production readiness merely because the website starts successfully.
+
+---
+
+# 28. YOUR FIRST RESPONSE AND EXECUTION STRATEGY
+
+Start by analyzing the three attached reference images and this complete specification.
+
+Then:
+
+1. Summarize the intended application architecture.
+2. Present the final folder structure.
+3. List the implementation phases.
+4. Identify any important technical decisions.
+5. Begin Phase 1 immediately.
+6. Create the actual project files rather than providing only a theoretical plan.
+7. Continue phase by phase, verifying the work as you proceed.
+
+If you have access to a coding workspace or terminal, use it to create and test the application directly.
+
+If you are operating only through chat, provide complete files in manageable groups with exact file paths and instructions.
+
+Do not pretend that files have been created on my computer when you have only displayed code in chat.
+
+If the entire project exceeds the available context or execution limits, preserve progress and continue in clearly numbered phases. Keep a checklist of completed and remaining tasks.
+
+Do not repeatedly ask me to reconfirm requirements already specified in this prompt.
+
+Ask questions only when an essential decision cannot reasonably be made from the supplied requirements.
+
+**Begin now by inspecting the supplied references, establishing the architecture, and implementing Phase 1.**
