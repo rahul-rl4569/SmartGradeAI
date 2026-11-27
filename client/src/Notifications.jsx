@@ -2,8 +2,9 @@ import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Bell, Check, CheckCheck, X } from "lucide-react";
+import { API_BASE } from "./apiConfig.js";
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || "http://127.0.0.1:4000/api",
+  baseURL: API_BASE,
   withCredentials: true,
   timeout: 15000,
 });
