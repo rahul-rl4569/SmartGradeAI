@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 import rateLimit from "express-rate-limit";
-import { env } from "./config/env.js";
+import { isAllowedClientOrigin } from "./config/clientOrigins.js";
 import healthRouter from "./routes/health.js";
 import contactRouter from "./routes/contact.js";
 import authRouter from "./routes/auth.js";
@@ -23,7 +23,9 @@ app.disable("x-powered-by");
 app.use(helmet());
 app.use(
   cors({
-    origin: env.CLIENT_URL,
+    origin: (origin, callback) => {
+      callback(null, Boolean(origin && isAllowedClientOrigin(origin)));
+    },
     credentials: true,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
   }),

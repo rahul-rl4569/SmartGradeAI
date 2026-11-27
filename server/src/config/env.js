@@ -14,7 +14,11 @@ const envSchema = z.object({
     .enum(["development", "test", "production"])
     .default("development"),
   PORT: z.coerce.number().int().min(1).max(65535).default(4000),
-  HOST: z.string().default("127.0.0.1"),
+  HOST: z
+    .string()
+    .default(
+      process.env.NODE_ENV === "production" ? "0.0.0.0" : "127.0.0.1",
+    ),
   CLIENT_URL: z.string().url().default("http://127.0.0.1:5173"),
   DATABASE_PATH: z.string().default("./data/smartgrade.sqlite"),
   JWT_SECRET: z

@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { randomUUID } from "node:crypto";
+import { createHash, randomUUID } from "node:crypto";
 import { app } from "../src/app.js";
 import { db } from "../src/database/db.js";
 
@@ -10,6 +10,24 @@ test("signup, login, session lookup, and logout work with role restrictions", as
   await new Promise((resolve) => server.once("listening", resolve));
   const base = `http://127.0.0.1:${server.address().port}/api`;
   const email = `phase3-${randomUUID()}@example.test`;
+  const teacherCode = `TCH-${randomUUID()}`;
+  const adminEmail = `test-admin-${randomUUID()}@example.test`;
+  const adminResult = db
+    .prepare(
+      "INSERT INTO users(full_name,email,password_hash,role) VALUES(?,?,?,'admin')",
+    )
+    .run("Test Admin", adminEmail, "test-password-hash");
+  const teacherCodeId = db
+    .prepare(
+      `INSERT INTO teacher_signup_codes(teacher_code_hash,teacher_email,created_by,expires_at)
+       VALUES(?,?,?,?)`,
+    )
+    .run(
+      createHash("sha256").update(teacherCode).digest("hex"),
+      email,
+      adminResult.lastInsertRowid,
+      new Date(Date.now() + 60 * 60 * 1000).toISOString(),
+    ).lastInsertRowid;
   let userId;
   try {
     let response = await fetch(`${base}/auth/signup`, {
@@ -23,6 +41,7 @@ test("signup, login, session lookup, and logout work with role restrictions", as
         email,
         password: "SafePassword!123",
         role: "teacher",
+        teacherCode,
         termsAccepted: true,
       }),
     });
@@ -78,5 +97,7 @@ test("signup, login, session lookup, and logout work with role restrictions", as
     assert.equal(response.status, 401);
   } finally {
     if (userId) db.prepare("DELETE FROM users WHERE id = ?").run(userId);
+    db.prepare("DELETE FROM teacher_signup_codes WHERE id = ?").run(teacherCodeId);
+    db.prepare("DELETE FROM users WHERE id = ?").run(adminResult.lastInsertRowid);
   }
 });

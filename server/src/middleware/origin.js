@@ -1,9 +1,9 @@
-import { env } from "../config/env.js";
+import { isAllowedClientOrigin } from "../config/clientOrigins.js";
 // Reject cross-origin state-changing requests. CORS is an additional browser boundary, not authentication.
 export function verifyRequestOrigin(req, res, next) {
   if (!["POST", "PUT", "PATCH", "DELETE"].includes(req.method)) return next();
   const origin = req.get("origin");
-  if (origin && origin !== env.CLIENT_URL)
+  if (origin && !isAllowedClientOrigin(origin))
     return res.status(403).json({
       error: {
         code: "ORIGIN_REJECTED",
